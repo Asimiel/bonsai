@@ -1,11 +1,11 @@
 <% if @page.files.empty? then %>
-    <p>No files uploaded for this page.</p>
+    <p><%= t(:no_files_uploaded)%></p>
 <% else %>
     <table>
       <thead>
       <tr>
-        <th>File</th>
-        <th>Uploader</th>
+        <th><%= t(:file)%></th>
+        <th><%= t(:uploader)%></th>
       </tr>
       </thead>
       <tbody>
@@ -16,7 +16,7 @@
                 <td><%= h file.user.full_name %></td>
             <% else %>
                 <td><%= link_to file, file %></td>
-                <td>unknown</td>
+                <td><%= t(:unknown)%></td>
             <% end %>
           </tr>
       <% end %>

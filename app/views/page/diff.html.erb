@@ -1,7 +1,7 @@
 <div class="bonsai">
-  <h1>Diff for <%=h @page.title %></h1>
+  <h1><%= t(:diff_for)%> <%=h @page.title %></h1>
   <% if @first_revision.was_deleted? != @second_revision.was_deleted? %>
-    <p>Revision <%=  @first_revision.was_deleted? ? @first_revision.id.to_s : @second_revision.id.to_s %> was marked as deleted.</p>
+    <p><%= t(:revision)%> <%=  @first_revision.was_deleted? ? @first_revision.id.to_s : @second_revision.id.to_s %> <%= t(:marked_as_deleted)%></p>
   <% else %>
     <%
     first = @first_revision.body.split("\n")

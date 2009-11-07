@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
 
-  @auto_localize = true
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -26,8 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :set_locale
-  if(@auto_localize)
-     def set_locale
+    def set_locale
       logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
       if(extract_locale_from_accept_language_header == "sk" || extract_locale_from_accept_language_header == "en")
           I18n.locale = extract_locale_from_accept_language_header
@@ -40,7 +38,5 @@ class ApplicationController < ActionController::Base
     def extract_locale_from_accept_language_header
       request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first unless request.env['HTTP_ACCEPT_LANGUAGE'].nil?
     end
-  end
-
 
 end
